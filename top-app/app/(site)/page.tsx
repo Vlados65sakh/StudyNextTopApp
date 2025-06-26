@@ -2,23 +2,7 @@
 
 import {Button, Htag, P, Rating, Tag} from "@/components";
 import React, {useEffect, useState} from "react";
-// import {fetch} from "undici-types";
-// import styles from './page.module.css';
 
-
-// export default function Home() {
-//     return (
-//         <main className={styles.main}>
-//             Главная страница
-//         </main>
-//     );
-// }
-
-
-// export const metadata = {
-//   title: "Главная страница",
-//   description: "Описание страницы"
-// };
 
 export default function Home() {
     const [counter, setCounter] = useState<number>(0);
@@ -31,14 +15,6 @@ export default function Home() {
                 console.log('Unmount');
             };
         });
-
-    // useEffect(() => {
-    //     .fetch('https://my-api.com/data')
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             setRating(data.rating);
-    //         });
-    // }, []);
 
     useEffect(() => {
         console.log('Mounted');

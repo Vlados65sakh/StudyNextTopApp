@@ -1,7 +1,6 @@
 import styles from './page.module.css';
 import {Metadata} from "next";
 import {Menu} from "@/app/(site)/components/menu";
-import {getMenu} from "@/api/menu";
 
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -41,11 +41,9 @@ export default async function PageProducts({ params }: Props) {
 	if (!page) {
 		notFound();
 	}
-
 	return (
 		<div>
 			<h1>{page.title}</h1>
-			{/* остальной контент страницы */}
 		</div>
 	);
 }

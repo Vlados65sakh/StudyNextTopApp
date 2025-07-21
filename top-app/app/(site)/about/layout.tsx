@@ -1,11 +1,16 @@
 import styles from "@/app/(site)/page.module.css";
 import {Inter} from "next/font/google";
-const inter = Inter({ subsets: ['latin'] });
+
+const inter = Inter({subsets: ['latin']});
 
 export default function AboutLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
+                                        children,
+                                        one,
+                                        two
+                                    }: Readonly<{
+    children: React.ReactNode,
+    one: React.ReactNode,
+    two: React.ReactNode;
 }>) {
 
 
@@ -20,6 +25,8 @@ export default function AboutLayout({
             </ul>
         </nav>
         {children}
+        {one}
+        {two}
         </body>
         </html>
     );

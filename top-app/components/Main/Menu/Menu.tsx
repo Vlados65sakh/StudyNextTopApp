@@ -9,10 +9,10 @@ import styles from './Menu.module.css';
 import cn from 'classnames';
 
 const firstLevelMenu: FirstLevelMenuItem[] = [
-    {route: 'courses', name: 'Курсы', icon: <CoursesIcon/>, id: TopLevelCategory.Courses},
+    {route: 'products', name: 'Курсы', icon: <CoursesIcon/>, id: TopLevelCategory.Courses},
     {route: 'services', name: 'Сервисы', icon: <ServicesIcon/>, id: TopLevelCategory.Services},
     {route: 'books', name: 'Книги', icon: <ProductsIcon/>, id: TopLevelCategory.Products},
-    {route: 'products', name: 'Товары', icon: <BooksIcon/>, id: TopLevelCategory.Books}
+    {route: 'courses', name: 'Товары', icon: <BooksIcon/>, id: TopLevelCategory.Books}
 ];
 
 export default async function Menu() {

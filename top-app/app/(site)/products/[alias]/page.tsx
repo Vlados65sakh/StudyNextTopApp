@@ -1,19 +1,40 @@
 // import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { cache } from 'react';
-import { getPage } from '@/api/page';
-import { getMenu } from '@/api/menu';
+import {notFound} from 'next/navigation';
+import {cache} from 'react';
+import {getPage, getProduct} from '@/api/page';
+import {getMenu} from '@/api/menu';
+import {ProductModel} from "@/interfaces/product.interface";
+import {TopPageComponent} from "@/components";
 
-interface AliasParams { alias: string }
+interface AliasParams {
+    alias: string
+}
+
 type Props = { params: Promise<AliasParams> };
 
 const cachedGetPage = cache(getPage);
+const cachedGetProduct = cache(getProduct);
 
 export async function generateStaticParams(): Promise<AliasParams[]> {
-	const menu = await getMenu(0);
-	return menu.flatMap(item =>
-		item.pages.map(p => ({ alias: p.alias }))
-	);
+    const menu = await getMenu(0);
+    return menu.flatMap(item =>
+        item.pages.map(p => ({alias: p.alias}))
+    );
+}
+
+// Компонент страницы
+export default async function PageProducts({params}: Props) {
+    const {alias} = await params;
+    const page = await cachedGetPage(alias);
+
+    if (!page) {
+        notFound();
+    }
+    const products: ProductModel[] | null = await cachedGetProduct(page);
+
+    return (
+        <TopPageComponent firstCategory={page.firstCategory} page={page} products={products ?? []}/>
+    );
 }
 
 // Генерация метаданных
@@ -33,20 +54,5 @@ export async function generateStaticParams(): Promise<AliasParams[]> {
 //
 // }
 
-// Компонент страницы
-export default async function PageProducts({ params }: Props) {
-	const { alias } = await params;
-	const page = await cachedGetPage(alias);
 
-	if (!page) {
-		notFound();
-	}
-	return (
-		<div>
-			<h1>{page.title}</h1>
-		</div>
-	);
-}
 
-// export const dynamicParams = true;
-// export const revalidate = 60; // ISR: обновление каждые 60 сек

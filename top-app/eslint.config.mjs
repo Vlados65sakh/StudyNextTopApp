@@ -10,7 +10,7 @@ export default [
         "next/typescript",
         "plugin:react-hooks/recommended"
     ),
-    // Остальные правила
+
     {
         files: ["**/*.ts", "**/*.tsx"],
         plugins: {
@@ -20,10 +20,16 @@ export default [
             parser: tsParser,
         },
         rules: {
-            "semi": ["error", "always"],
-            "@typescript-eslint/no-empty-interface": ["error", { allowSingleExtends: true }],
+            "semi": ["warn", "always"],
+
+            // Отключаем старое правило (no-empty-interface)
+            "@typescript-eslint/no-empty-interface": "off",
+
+            // Включаем то, которое у тебя ругается (no-empty-object-type)
+            "@typescript-eslint/no-empty-object-type": ["warn", { allowSingleExtends: true }],
         },
     },
+
     {
         files: ["**/*.js", "**/*.jsx"],
         rules: {

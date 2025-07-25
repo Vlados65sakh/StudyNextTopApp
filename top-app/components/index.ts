@@ -6,3 +6,6 @@ export * from './P/P';
 export * from './Main/Footer/Footer';
 export * from './Main/Header/Header';
 export * from './Main/Sidebar/Sidebar';
+export * from './TopPageComponent/TopPageComponent';
+export * from './Card/Card';
+export * from './HhData/HhData';

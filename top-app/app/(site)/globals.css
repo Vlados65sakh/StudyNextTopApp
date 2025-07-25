@@ -1,3 +1,15 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  color: var(--black);
+  background: #F5F6F8;
+
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -10,7 +22,10 @@
   --green: #1DC37E;
   --green-light: #C8F8E4;
   --gray-lighter: #EBEBEB;
-  --gray-dark: #787D85
+  --gray-dark: #787D85;
+  --dark: #3B434E;
+  --font-family: "Noto Sans KR", sans-serif;
+  --gray-light: #EBEBEB;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -52,3 +67,4 @@ a {
     color-scheme: dark;
   }
 }
+

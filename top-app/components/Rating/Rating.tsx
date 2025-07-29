@@ -2,7 +2,7 @@
 
 
 import {RatingProps} from "./Rating.props";
-import {JSX, useEffect, useState, KeyboardEvent} from "react";
+import {JSX, KeyboardEvent, useEffect, useState} from "react";
 import styles from './Rating.module.css';
 import StarIcon from './star.svg';
 import cn from "classnames";

@@ -1,15 +1,5 @@
 import styles from './page.module.css';
-import {Metadata} from "next";
 import {Menu} from "@/app/(site)/components/menu";
-
-
-export async function generateMetadata(): Promise<Metadata> {
-    //...
-    return {
-        title: 'ComputedMeta',
-    };
-}
-
 
 
 /**

@@ -24,8 +24,12 @@ body {
   --gray-lighter: #EBEBEB;
   --gray-dark: #787D85;
   --dark: #3B434E;
-  --font-family: "Noto Sans KR", sans-serif;
   --gray-light: #EBEBEB;
+  --gray: #A4A4A4;
+  --red: #FC836D;
+  --green: #1DC37E;
+  --font-family: "Noto Sans KR", sans-serif;
+
 }
 
 @media (prefers-color-scheme: dark) {

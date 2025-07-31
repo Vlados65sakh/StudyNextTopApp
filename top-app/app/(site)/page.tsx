@@ -1,5 +1,6 @@
 import styles from './page.module.css';
 import {Menu} from "@/app/(site)/components/menu";
+import React from "react";
 
 
 /**

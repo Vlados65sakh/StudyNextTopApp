@@ -1,6 +1,6 @@
 'use client';
 
-import {Button, Htag, P, Rating, Tag} from "@/components";
+import {Button, Htag, Input, P, Rating, Tag, Textarea} from "@/components";
 import React, {useEffect, useState} from "react";
 
 
@@ -35,10 +35,8 @@ export default function Home() {
                 <Tag size={'s'} color={"green"}>Green</Tag>
                 <Tag color={'primary'} >Green</Tag>
                 <Rating rating={rating} isEditable setRating={setRating} />
-
-
+                <Input placeholder={'тест'}/>
+                <Textarea placeholder={'тест'}/>
             </div>
-
-
          );
 }

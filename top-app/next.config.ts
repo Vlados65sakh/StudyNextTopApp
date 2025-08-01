@@ -47,6 +47,15 @@ const customWebpack = (config: Configuration): Configuration => {
 };
 
 module.exports = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**.vkcs.cloud',
+                port: '',
+            },
+        ],
+    },
     webpack: customWebpack,
 };
 

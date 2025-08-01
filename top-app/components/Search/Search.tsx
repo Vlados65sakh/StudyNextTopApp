@@ -1,14 +1,14 @@
 'use client';
 
-import {SearchProps} from "./Search.props";
-import {JSX, useState} from "react";
-import cn from "classnames";
+import {SearchProps} from './Search.props';
+import React, {JSX, useState} from 'react';
+import cn from 'classnames';
 import styles from './Search.module.css';
-import {Button, Input} from "@/components";
+import {Button, Input} from '@/components';
 import GlassIcon from './glass.svg';
-import  { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
 
-export const Search = ({className, ...props}: SearchProps): JSX.Element => {
+export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
     const [search, setSearch] = useState<string>('');
     const router = useRouter();
 
@@ -16,8 +16,8 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
         router.push( `/search?q=${search}` );
     };
 
-    const handleKeyDown = (e : KeyboardEvent) => {
-        if (e.key == 'Enter') {
+    const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = e => {
+        if (e.key === 'Enter') {
             goToSearch();
         }
     };
@@ -28,7 +28,7 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
                 className={styles.input}
                 placeholder={"Поиск..."}
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={e => setSearch(e.target.value)}
                 onKeyDown={handleKeyDown}
             />
             <Button

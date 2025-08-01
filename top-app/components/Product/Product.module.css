@@ -10,11 +10,11 @@
     grid-row: 1 / span 2;
 }
 
-.title, .tags{
+.title, .tags {
     grid-column: titlestart / middle;
 }
 
-.price, .priceTitle{
+.price, .priceTitle {
     grid-column: pricestart / priceend;
 }
 
@@ -38,7 +38,7 @@
     grid-column: middle / end;
 }
 
-.logo img{
+.logo img {
     border-radius: 5px;
 }
 
@@ -53,7 +53,7 @@
     margin-top: 7px;
 }
 
-.price, .credit{
+.price, .credit {
     font-size: 20px;
     line-height: 27px;
     align-self: flex-end;
@@ -84,7 +84,7 @@
     line-height: 19px;
 }
 
-.reviewButton{
+.reviewButton {
     margin-left: 20px;
 }
 
@@ -101,11 +101,33 @@
 .advantages {
     border-left: 2px solid var(--green);
     padding-left: 15px;
-    margin-bottom: 20px ;
+    margin-bottom: 20px;
 }
 
 .disadvantages {
     border-left: 2px solid var(--red);
     padding-left: 15px;
+}
+
+.characteristics {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding-right: 60px;
+    align-items: baseline;
+    gap: 10px;
+
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.characteristicsName {
+
+    font-weight: 700;
+}
+
+
+.characteristicsDots {
+    border-bottom: 1px dashed var(--gray-light);
+    margin-bottom: 5px;
 }
 

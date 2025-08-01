@@ -5,6 +5,7 @@ import {getPage, getProduct} from '@/api/page';
 import {getMenu} from '@/api/menu';
 import {ProductModel} from "@/interfaces/product.interface";
 import {TopPageComponent} from "@/components";
+import {firstLevelMenu} from "@/helpers/helpers";
 
 interface AliasParams {
     alias: string
@@ -16,12 +17,27 @@ const cachedGetPage = cache(getPage);
 const cachedGetProduct = cache(getProduct);
 
 export async function generateStaticParams(): Promise<AliasParams[]> {
-    const menu = await getMenu(0);
-    return menu.flatMap(item =>
-        item.pages.map(p => ({alias: p.alias}))
-    );
-}
+    const paths: {type: string, alias: string }[][] = [];
 
+    for (const m of firstLevelMenu) {
+        const  menu  = await getMenu(m.id);
+        const test = menu.flatMap(s => s.pages.map(p => {
+            return {
+                type: m.route,
+                alias: p.alias
+            };
+        }));
+        paths.push(test);
+    }
+    console.log(paths);
+
+    return paths.flatMap(path => path.map((p) => {
+        return {
+            type: p.type,
+            alias: p.alias
+        };
+    }));
+}
 // Компонент страницы
 export default async function PageProducts({params}: Props) {
     const {alias} = await params;

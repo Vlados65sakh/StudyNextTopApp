@@ -1,16 +1,13 @@
-'use client';
-
-import {useSearchParams} from "next/navigation";
-
+import React, { Suspense } from 'react';
+import { SearchContent } from './SearchContent';
 
 export default function SearchPage() {
-    const searchParams = useSearchParams();
-    const q = searchParams.get('q') || '';
-
     return (
-        <div>
+        <main>
             <h1>Результаты поиска</h1>
-            <p>Вы искали: {q}</p>
-        </div>
+            <Suspense fallback={<p>Загрузка...</p>}>
+                <SearchContent />
+            </Suspense>
+        </main>
     );
 }

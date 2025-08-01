@@ -58,7 +58,7 @@
     }
 }
 
-/*.products {*/
+/*.[type] {*/
 /*  --gray-rgb: 0, 0, 0;*/
 /*  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);*/
 /*  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);*/
@@ -77,7 +77,7 @@
 /*}*/
 
 /*@media (prefers-color-scheme: dark) {*/
-/*  .products {*/
+/*  .[type] {*/
 /*    --gray-rgb: 255, 255, 255;*/
 /*    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);*/
 /*    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);*/
@@ -187,7 +187,7 @@
 /*}*/
 
 /*@media (max-width: 600px) {*/
-/*  .products {*/
+/*  .[type] {*/
 /*    padding: 32px;*/
 /*    padding-bottom: 80px;*/
 /*  }*/

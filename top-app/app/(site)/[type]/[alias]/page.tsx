@@ -5,6 +5,7 @@ import {getPage, getProduct} from '@/api/page';
 import {getMenu} from '@/api/menu';
 import {ProductModel} from "@/interfaces/product.interface";
 import {TopPageComponent} from "@/components";
+import {firstLevelMenu} from "@/helpers/helpers";
 
 interface AliasParams {
     alias: string
@@ -16,7 +17,42 @@ const cachedGetPage = cache(getPage);
 const cachedGetProduct = cache(getProduct);
 
 export async function generateStaticParams(): Promise<AliasParams[]> {
-    const menu = await getMenu(0);
+    // const secondLevelMenu: MenuItem[][] = [];
+    let paths: {type: string, alias: string }[] = [];
+
+    for (const m of firstLevelMenu) {
+        const  menu  = await getMenu(m.id);
+        console.log(menu.flatMap(s => s.pages.map(p => {type: m.route })));
+        // paths = paths.concat(menu.flatMap(s => s.pages.map(p => `/${m.route}/${p.alias}`)));
+    }
+    // console.log(paths);
+
+
+
+    // for(const m of firstLevelMenu){
+    //     const secondMenu = await getMenu(m.id);
+    //     // secondLevelMenu.push(secondMenu);
+    //
+    // }
+    //
+    // // const thirdLevelMenu = [];
+    //
+    // for(const sm of secondLevelMenu) {
+    //     console.log(sm);
+
+        // for(const fm of sm){
+        //     // const thirdMenu = await getMenu(fm);
+        //     // thirdLevelMenu.push(thirdMenu);
+        //     // console.log(fm);
+        // }
+    // }
+
+
+    // console.log(secondLevelMenu);
+
+    const menu = await getMenu(3);
+    // console.log(menu.map(item => item.pages, ));
+
     return menu.flatMap(item =>
         item.pages.map(p => ({alias: p.alias}))
     );

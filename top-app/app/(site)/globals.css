@@ -17,7 +17,7 @@ body {
   --white: white;
   --primary: #7653FC;
   --primary-hover: #6344DF;
-  --white: #EBEBEB;
+  /*--white: #EBEBEB;*/
   --red: #FC836D;
   --green: #1DC37E;
   --green-light: #C8F8E4;
@@ -26,8 +26,7 @@ body {
   --dark: #3B434E;
   --gray-light: #EBEBEB;
   --gray: #A4A4A4;
-  --red: #FC836D;
-  --green: #1DC37E;
+  --red-light: #fea291;
   --font-family: "Noto Sans KR", sans-serif;
 
 }

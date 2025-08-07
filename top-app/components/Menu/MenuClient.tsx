@@ -8,7 +8,7 @@ import Link from "next/link";
 import cn from "classnames";
 import styles from './Menu.module.css';
 import {firstLevelMenu} from "@/helpers/helpers";
-
+import {motion} from 'framer-motion';
 
 interface MenuClientProps {
     menu: MenuItem[];
@@ -16,21 +16,45 @@ interface MenuClientProps {
 }
 
 
-export function MenuClient({ menu: serverMenu, firstCategory }: MenuClientProps) {
+export function MenuClient({menu: serverMenu, firstCategory}: MenuClientProps) {
     const pathname = usePathname();
     const [menu, setMenu] = useState<MenuItem[]>(() =>
         serverMenu.map((item) => {
             // Открываем тот раздел, который соответствует текущему URL
             const isOpened = item.pages.some((p) => pathname?.includes(p.alias));
-            return { ...item, isOpened };
+            return {...item, isOpened};
         })
     );
+    const variants = {
+        visible: {
+            marginBottom: 20,
+            transition: {
+                when: 'beforeChildren',
+                staggerChildren: 0.1
+            }
+        },
+        hidden: {
+            marginBottom: 0
+
+        }
+    };
+
+    const variantsChildren = {
+        visible: {
+            opacity: 1,
+            height: 29
+        },
+        hidden: {
+            opacity: 0,
+            height: 0
+        }
+    };
 
     const openSecondLevel = (secondCategory: string) => {
         setMenu((prevMenu) =>
             prevMenu.map((m) =>
                 m._id.secondCategory === secondCategory
-                    ? { ...m, isOpened: !m.isOpened }
+                    ? {...m, isOpened: !m.isOpened}
                     : m
             )
         );
@@ -70,13 +94,15 @@ export function MenuClient({ menu: serverMenu, firstCategory }: MenuClientProps)
                         >
                             {menuItem._id.secondCategory}
                         </div>
-                        <div
-                            className={cn(styles.secondLevelBlock, {
-                                [styles.secondLevelBlockOpen]: menuItem.isOpened,
-                            })}
+                        <motion.div
+                            layout
+                            variants={variants}
+                            initial={menuItem.isOpened ? 'visible' : 'hidden'}
+                            animate={menuItem.isOpened ? 'visible' : 'hidden'}
+                            className={cn(styles.secondLevelBlock)}
                         >
                             {buildThirdLevel(menuItem.pages, menuItemRoute)}
-                        </div>
+                        </motion.div>
                     </div>
                 ))}
             </div>
@@ -87,15 +113,16 @@ export function MenuClient({ menu: serverMenu, firstCategory }: MenuClientProps)
         return (
             <>
                 {pages.map((page) => (
-                    <Link
-                        href={`/${route}/${page.alias}`}
-                        key={page._id}
-                        className={cn(styles.thirdLevel, {
-                            [styles.thirdLevelActive]: pathname === `/${route}/${page.alias}`,
-                        })}
-                    >
-                        {page.category}
-                    </Link>
+                    <motion.div key={page._id} variants={variantsChildren}>
+                        <Link
+                            href={`/${route}/${page.alias}`}
+                            className={cn(styles.thirdLevel, {
+                                [styles.thirdLevelActive]: pathname === `/${route}/${page.alias}`,
+                            })}
+                        >
+                            {page.category}
+                        </Link>
+                    </motion.div>
                 ))}
             </>
         );

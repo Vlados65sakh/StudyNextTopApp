@@ -140,6 +140,10 @@
     padding: 30px;
 }
 
+.rateTitle a {
+    color: var(--primary);
+}
+
 
 .characteristicsDots {
     border-bottom: 1px dashed var(--gray-light);

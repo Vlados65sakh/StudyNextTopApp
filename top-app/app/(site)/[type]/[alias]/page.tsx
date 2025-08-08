@@ -1,7 +1,7 @@
 // import type { Metadata } from 'next';
 import {notFound} from 'next/navigation';
 import {cache} from 'react';
-import {getPage, getProduct} from '@/api/page';
+import {getPage, getProduct} from '@/api/pages';
 import {getMenu} from '@/api/menu';
 import {ProductModel} from "@/interfaces/product.interface";
 import {TopPageComponent} from "@/components";

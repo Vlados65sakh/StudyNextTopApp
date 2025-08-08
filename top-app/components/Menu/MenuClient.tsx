@@ -25,6 +25,8 @@ export function MenuClient({menu: serverMenu, firstCategory}: MenuClientProps) {
             return {...item, isOpened};
         })
     );
+
+
     const variants = {
         visible: {
             marginBottom: 20,

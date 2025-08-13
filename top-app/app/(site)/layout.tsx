@@ -5,10 +5,10 @@ import styles from './page.module.css';
 import {getMenu} from "@/api/menu";
 import {AppContextProvider} from "@/context/app.context";
 import {Metadata} from "next";
+import {LayoutClient} from "@/components/LayoutClient/LayoutClient";
 
 
 export async function generateMetadata(): Promise<Metadata> {
-    //...
     return {
         title: 'MyTop - наш лучший топ',
     };
@@ -16,12 +16,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({
                                              children,
-                                         }: Readonly<{
-    children: React.ReactNode;
-}>) {
-
+                                         }: Readonly<{ children: React.ReactNode }>) {
     const firstCategory = 0;
-    const menu = await getMenu(firstCategory);
+    const menu = await getMenu(firstCategory); // серверный фетч
 
     return (
         <html lang="ru">
@@ -38,6 +35,8 @@ export default async function RootLayout({
                 <Footer className={styles.footer}/>
                 <Up/>
             </div>
+            {/* Вся интерактивщина — внутри клиента */}
+            {/*<LayoutClient>{children}</LayoutClient>*/}
         </AppContextProvider>
         </body>
         </html>

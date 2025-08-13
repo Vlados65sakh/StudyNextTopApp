@@ -1,4 +1,4 @@
-.firstLevel{
+.firstLevel {
     display: grid;
     grid-template-columns: 24px 1fr;
     gap: 20px;
@@ -9,16 +9,16 @@
 }
 
 .firstLevelActive,
-.firstLevel:hover{
+.firstLevel:hover {
     color: var(--primary)
 }
 
 .firstLevelActive svg,
-.firstLevel:hover svg{
+.firstLevel:hover svg {
     fill: var(--primary)
 }
 
-.secondLevel{
+.secondLevel {
     margin-bottom: 10px;
 
     cursor: pointer;
@@ -27,21 +27,21 @@
 
     font-weight: 400;
     font-size: 12px;
-    line-height: 16px;
 }
 
-.secondBlock{
+.secondBlock {
     margin-top: 15px;
     margin-left: 12px;
     padding-left: 32px;
     border-left: 1px solid #DFDFDF;
 }
-.secondLevelBlock{
+
+.secondLevelBlock {
     overflow: hidden;
 }
 
 
-.thirdLevel{
+.thirdLevel {
     margin-bottom: 10px;
     display: block;
 
@@ -49,12 +49,12 @@
     color: var(--dark);
     font-weight: 500;
     font-size: 14px;
-    line-height: 19px;
+    outline-offset: -1px ;
 
 }
 
 .thirdLevelActive,
-.thirdLevel:hover{
+.thirdLevel:hover {
     color: var(--primary)
 
 }

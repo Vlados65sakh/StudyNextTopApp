@@ -2,8 +2,10 @@ import type { NextConfig } from "next";
 import type { Configuration, RuleSetRule } from "webpack";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+    output: 'export',
 };
+module.exports = nextConfig;
+
 const customWebpack = (config: Configuration): Configuration => {
     // Убедимся, что module и rules существуют
     if (!config.module || !config.module.rules) {

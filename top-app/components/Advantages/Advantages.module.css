@@ -1,63 +1,90 @@
 .advantage {
-    display: grid;
-    grid-template-columns: 50px 1fr;
-    gap: 10px 40px;
-    margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 10px 40px;
+  margin-bottom: 30px;
 }
 
 .title {
-    /*align-self эта центрует текст*/
-    align-self: center;
-    font-weight: 700;
+  /* align-self эта центрует текст */
+  align-self: center;
+  font-weight: 700;
 }
 
 .vline{
-    border-left: 1px solid #D2D2D2;
-    margin: 0 auto;
+  margin: 0 auto;
+  border-left: 1px solid #D2D2D2;
 }
 
-/*.heading {*/
-/*    font-weight: 500;*/
-/*    font-size: 22px;*/
-/*    line-height: 30px;*/
-/*}*/
+/* .heading { */
 
-/*.upper {*/
-/*    margin-top: 47px;*/
-/*}*/
+/*    font-weight: 500; */
 
-/*.wrapper {*/
-/*    display: grid;*/
-/*    grid-template-columns: auto 1fr;*/
-/*    gap: 40px;*/
-/*    margin-top: 40px;*/
-/*    align-items: center;*/
+/*    font-size: 22px; */
 
-/*    font-weight: 700;*/
-/*    font-size: 20px;*/
-/*    line-height: 27px;*/
+/*    line-height: 30px; */
+
+/* } */
+
+/* .upper { */
+
+/*    margin-top: 47px; */
+
+/* } */
+
+/* .wrapper { */
+
+/*    display: grid; */
+
+/*    grid-template-columns: auto 1fr; */
+
+/*    gap: 40px; */
+
+/*    margin-top: 40px; */
+
+/*    align-items: center; */
+
+/*    font-weight: 700; */
+
+/*    font-size: 20px; */
+
+/*    line-height: 27px; */
 
 
-/*}*/
+/* } */
 
-/*.text {*/
-/*    display: grid;*/
-/*    grid-template-columns: 1fr;*/
-/*    !*margin-left: 10px;*!*/
-/*    padding: 20px;*/
-/*    gap: 20px 0;*/
+/* .text { */
 
-/*    font-weight: 400;*/
-/*    font-size: 18px;*/
-/*    line-height: 29px;*/
-/*}*/
+/*    display: grid; */
 
-/*.text > div {*/
-/*    border-left: 1px solid #D2D2D2;*/
-/*    padding-left: 68px;*/
-/*}*/
+/*    grid-template-columns: 1fr; */
 
-/*.tag {*/
-/*    margin-top: 20px;*/
-/*    margin-bottom: 50px;*/
-/*}*/
+/*    !*margin-left: 10px;*! */
+
+/*    padding: 20px; */
+
+/*    gap: 20px 0; */
+
+/*    font-weight: 400; */
+
+/*    font-size: 18px; */
+
+/*    line-height: 29px; */
+
+/* } */
+
+/* .text > div { */
+
+/*    border-left: 1px solid #D2D2D2; */
+
+/*    padding-left: 68px; */
+
+/* } */
+
+/* .tag { */
+
+/*    margin-top: 20px; */
+
+/*    margin-bottom: 50px; */
+
+/* } */

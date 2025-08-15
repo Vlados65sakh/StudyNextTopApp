@@ -6,6 +6,7 @@ import {getMenu} from '@/api/menu';
 import {ProductModel} from "@/interfaces/product.interface";
 import {TopPageComponent} from "@/components";
 import {firstLevelMenu} from "@/helpers/helpers";
+import {Metadata} from "next";
 
 interface AliasParams {
     alias: string
@@ -38,6 +39,25 @@ export async function generateStaticParams(): Promise<AliasParams[]> {
         };
     }));
 }
+
+// Генерация метаданных
+export async function generateMetadata(
+    { params }: Props,
+    // parent: ResolvingMetadata
+): Promise<Metadata | null> {
+    const { alias } = await params;
+
+    const page = await cachedGetPage(alias);
+    if (!page) {
+        notFound(); // вызывает 404 и прекращает рендер segment
+    }
+    return {
+        title: page.metaTitle ?? undefined,
+        description: page.metaDescription ?? undefined, // если используете описание
+    };
+
+}
+
 // Компонент страницы
 export default async function PageProducts({params}: Props) {
     const {alias} = await params;
@@ -52,23 +72,6 @@ export default async function PageProducts({params}: Props) {
         <TopPageComponent firstCategory={page.firstCategory} page={page} products={products ?? []}/>
     );
 }
-
-// Генерация метаданных
-// export async function generateMetadata(
-// 	{ params }: Props,
-// 	// parent: ResolvingMetadata
-// ): Promise<Metadata | null> {
-// 	const { alias } = await params;
-//
-// 		const page = await cachedGetPage(alias);
-// 		if (!page) {
-// 			notFound(); // вызывает 404 и прекращает рендер segment
-// 		}
-// 		return {
-// 			title: page.metaTitle ?? undefined,
-// 		};
-//
-// }
 
 
 

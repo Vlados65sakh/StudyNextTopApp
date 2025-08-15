@@ -12,7 +12,7 @@ export const Up = (): JSX.Element => {
 
     useEffect(() => {
         controls.start({opacity: y / document.body.scrollHeight});
-    }, [y, controls])
+    }, [y, controls]);
 
     const scrollToTop = () => {
         window.scrollTo({

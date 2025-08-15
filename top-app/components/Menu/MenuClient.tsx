@@ -3,7 +3,7 @@ import {MenuItem, PageItem} from "@/interfaces/menu.interface";
 import {TopLevelCategory} from "@/interfaces/page.interface";
 
 import {usePathname} from "next/navigation";
-import {useState} from "react";
+import {useState, KeyboardEvent} from "react";
 import Link from "next/link";
 import cn from "classnames";
 import styles from './Menu.module.css';
@@ -62,6 +62,12 @@ export function MenuClient({menu: serverMenu, firstCategory}: MenuClientProps) {
         );
     };
 
+    const openSecondLevelKey = (key: KeyboardEvent, secondCategory: string) => {
+        if (key.code == 'Space' || key.code == 'Enter') {
+            openSecondLevel(secondCategory);
+        }
+    };
+
     const buildFirstLevel = () => {
         return (
             <>
@@ -89,7 +95,10 @@ export function MenuClient({menu: serverMenu, firstCategory}: MenuClientProps) {
         return (
             <div className={styles.secondBlock}>
                 {menu.map((menuItem) => (
-                    <div key={menuItem._id.secondCategory}>
+                    <div
+                        tabIndex={0}
+                        onKeyDown={(key: KeyboardEvent) => openSecondLevelKey(key, menuItem._id.secondCategory)}
+                        key={menuItem._id.secondCategory}>
                         <div
                             className={styles.secondLevel}
                             onClick={() => openSecondLevel(menuItem._id.secondCategory)}
@@ -103,7 +112,7 @@ export function MenuClient({menu: serverMenu, firstCategory}: MenuClientProps) {
                             animate={menuItem.isOpened ? 'visible' : 'hidden'}
                             className={cn(styles.secondLevelBlock)}
                         >
-                            {buildThirdLevel(menuItem.pages, menuItemRoute)}
+                            {buildThirdLevel(menuItem.pages, menuItemRoute, menuItem.isOpened ?? false)}
                         </motion.div>
                     </div>
                 ))}
@@ -111,11 +120,13 @@ export function MenuClient({menu: serverMenu, firstCategory}: MenuClientProps) {
         );
     };
 
-    const buildThirdLevel = (pages: PageItem[], route: string) => {
+    const buildThirdLevel = (pages: PageItem[], route: string, isOpened: boolean) => {
         return (
             <>
                 {pages.map((page) => (
-                    <motion.div key={page._id} variants={variantsChildren}>
+                    <motion.div
+                        tabIndex={isOpened ? 0 : -1}
+                        key={page._id} variants={variantsChildren}>
                         <Link
                             href={`/${route}/${page.alias}`}
                             className={cn(styles.thirdLevel, {
